@@ -44,7 +44,6 @@ function checkKeyPress(key) {
         done: false,
         trash: false,
       });
-
       id += 1;
     }
   }
