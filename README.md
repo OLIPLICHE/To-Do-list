@@ -16,12 +16,12 @@ In this project I created a simple to-do-list using JavaScript, and webpack.
 
 
 ## Live Demo
-- [Live Demo Link]()
+- [Live Demo Link](https://olipliche.github.io/To-Do-list/)
 
 ## Installation
 
-- You can clone this repo by typing git clone `https://github.com/OLIPLICHE/HTML-CSS-JavaScript-capstone-project-.git` on your terminal
-- Type cd `HTML-CSS-JavaScript-capstone-project-` to access the project on the terminal
+- You can clone this repo by typing git clone `https://github.com/OLIPLICHE/To-Do-list.git` on your terminal
+- Type cd `https://github.com/OLIPLICHE/To-Do-list` to access the project on the terminal
 
 
 ### Prerequisites
@@ -42,7 +42,7 @@ In this project I created a simple to-do-list using JavaScript, and webpack.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page]().
+Feel free to check the [issues page](https://github.com/OLIPLICHE/To-Do-list/issues).
 
 ## Show your support
 
