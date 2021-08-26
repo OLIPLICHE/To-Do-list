@@ -1,0 +1,121 @@
+body {
+  background-color: rgb(248, 251, 252);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  display: none;
+}
+
+.container {
+  padding: 10px;
+  width: 380px;
+  margin: 0 auto;
+}
+
+.header {
+  position: relative;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.clear {
+  position: absolute;
+  right: 14px;
+  top: 23px;
+}
+
+.title h2 {
+  padding: 19px;
+  margin: 0;
+}
+
+.header1 {
+  position: relative;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.add-to-do input {
+  font-size: 14px;
+  padding: 11px 202px 19px 0;
+}
+
+.enter {
+  position: absolute;
+  right: 11px;
+  top: 22px;
+}
+
+.content {
+  position: relative;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.content ul {
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 26px;
+}
+
+.item i.co {
+  position: absolute;
+  font-size: 25px;
+  padding-left: 5px;
+  left: 15px;
+  top: 10px;
+}
+
+.item i.co:hover {
+  cursor: pointer;
+}
+
+.fa-check-circle {
+  color: #6eb200;
+}
+
+.item p.text {
+  position: absolute;
+  margin: 0;
+  font-size: 19px;
+  top: 10px;
+  left: 59px;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.item i.de {
+  position: absolute;
+  font-size: 25px;
+  right: 15px;
+  top: 10px;
+}
+
+.item i.de:hover {
+  color: #af0000;
+  cursor: all-scroll;
+}
+
+.clean-complete {
+  position: relative;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.clean {
+  text-align: center;
+  font-size: 17px;
+  padding: 19px;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
