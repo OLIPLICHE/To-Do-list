@@ -1,50 +1,40 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-use-before-define */
-/* eslint-disable indent */
+/* eslint-disable no-plusplus */
 /* eslint-disable quotes */
-/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
+import _ from 'lodash';
 import './style.css';
 
-const clear = document.querySelector('.clear');
-const list = document.getElementById('list');
-const input = document.getElementById('input');
+const arrayList = [{
+  description: `Wake up at dome to pray`,
+  completed: false,
+  index: 4,
+},
+{
+  description: `attend Church service in the morning`,
+  completed: false,
+  index: 5,
+},
+{
+  description: `dinner with my parents`,
+  completed: false,
+  index: 9,
+},
+];
+arrayList.sort((a, b) => a.index - b.index);
 
-const CHECK = 'fa-check-square';
-const UNCHECK = "fa-square-thin";
-const LINE_THROUGH = "lineThrough";
+const listContent = document.getElementById('list');
 
-const LIST = [];
-    let id = 0;
-
-function addToDo(toDo, id, done, trash) {
-  if (trash) { return; }
-  const DONE = done ? CHECK : UNCHECK;
-  const LINE = done ? LINE_THROUGH : "";
-  const item = ` <li class ="item">
-  <i class="far ${DONE} co" job="complete" id="${id}"></i>
-  <p class="text ${LINE}">${toDo}</p>
-  <i class="fas fa-ellipsis-v de" job="delete" id="${id}"></i>
+const showTasList = () => {
+  listContent.innerHTML = '';
+  for (let i = 0; i < arrayList.length; i++) {
+    const rules = arrayList[i];
+    const listOfTask = `<li class="item">
+    <i class="far fa-square co" job="complete" id="${rules.index}"></i>
+    <p class="text">${rules.description}</p>
+    <i class="fas fa-ellipsis-v de" job="delete" id="${rules.index}"></i> 
   </li>
-  `;
-  const position = "beforeend";
-  list.insertAdjacentHTML(position, item);
-}
-
-document.addEventListener("keyup", checkKeyPress);
-function checkKeyPress(key) {
-  if (key.keyCode == 13) {
-    const toDo = input.value;
-    if (toDo) {
-      addToDo(toDo, id, false, false);
-
-      LIST.push({
-        name: toDo,
-        id,
-        done: false,
-        trash: false,
-      });
-      id += 1;
-    }
+    `;
+    listContent.innerHTML += listOfTask;
   }
-}
+};
+window.onload = showTasList;
