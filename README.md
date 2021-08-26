@@ -18,10 +18,14 @@ In this project I created a simple to-do-list using JavaScript, and webpack.
 ## Live Demo
 - [Live Demo Link](https://olipliche.github.io/To-Do-list/)
 
-## Installation
-
-- You can clone this repo by typing git clone `https://github.com/OLIPLICHE/To-Do-list.git` on your terminal
+## Getting started
+To get a local copy of this project, follow these simple steps
+- Clone this clone this repo by typing: git clone `https://github.com/OLIPLICHE/To-Do-list.git`, on your local terminal
 - Type cd `https://github.com/OLIPLICHE/To-Do-list` to access the project on the terminal
+
+## To make the project run in your local machine
+- You will need to set up or install webpack (npm server)  in your machine. Open the link bellow for set up
+- `https://webpack.js.org/guides/getting-started/#basic-setup`
 
 
 ### Prerequisites
