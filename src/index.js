@@ -19,7 +19,7 @@ const contentList = [{
 {
   description: `dinner with my parents`,
   completed: false,
-  index: 4,
+  index: 1,
 },
 ];
 contentList.sort((a, b) => a.index - b.index);
@@ -44,8 +44,9 @@ const showList = () => {
   for (let i = 0; i < tList.length; i += 1) {
     const duties = tList[i];
     const list = ` <li class="setDown" id="${duties.index}">
-      <input type="checkbox" class="examine" id="list-checkbox" name="list-checkbox">
-      ${duties.description}<span class="icon"><i class="fa fa-ellipsis-v"></i></span> <span class="btn-del"></i></span>
+      <input type="checkbox" class="examine" id="list-checkbox" name="list-checkbox" ${duties.completed && 'checked'}>
+      <div>${duties.description}</div>
+      <span class="icon"><i class="fa fa-ellipsis-v"></i></span> <span class="btn-del"></i></span>
   </li>`;
     listContent.innerHTML += list;
   }
@@ -56,12 +57,12 @@ const showList = () => {
       if (examine[k].checked) {
         examine[k].completed = true;
         update(event.target, tList[k]);
-        event.target.parentNode.classList.toggle('checked');
+        // event.target.parentNode.classList.toggle('checked');
         myHandleStorage(tList);
       } else {
         examine[k].completed = false;
         update(event.target, tList[k]);
-        event.target.parentNode.classList.remove('checked');
+        // event.target.parentNode.classList.remove('checked');
         myHandleStorage(tList);
       }
     });
