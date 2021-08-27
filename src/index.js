@@ -31,7 +31,6 @@ const getElmtFromLocalStorage = () => JSON.parse(localStorage.getItem('myList'))
 
 window.onload = () => {
   const getSetDown = getElmtFromLocalStorage();
-
   if (getSetDown === null) {
     myHandleStorage(contentList);
   }
