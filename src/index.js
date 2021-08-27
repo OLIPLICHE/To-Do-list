@@ -1,10 +1,12 @@
-/* eslint-disable no-plusplus */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-undef */
 /* eslint-disable quotes */
 /* eslint-disable no-unused-vars */
-import _ from 'lodash';
+/* eslint-disable no-loop-func */
 import './style.css';
+import update from './new';
 
-const arrayList = [{
+const contentList = [{
   description: `Wake up at dome to pray`,
   completed: false,
   index: 4,
@@ -12,29 +14,57 @@ const arrayList = [{
 {
   description: `attend Church service in the morning`,
   completed: false,
-  index: 5,
+  index: 2,
 },
 {
   description: `dinner with my parents`,
   completed: false,
-  index: 9,
+  index: 4,
 },
 ];
-arrayList.sort((a, b) => a.index - b.index);
+contentList.sort((a, b) => a.index - b.index);
 
-const listContent = document.getElementById('list');
+const myHandleStorage = (items) => {
+  localStorage.setItem('myList', JSON.stringify(items));
+};
+const getElmtFromLocalStorage = () => JSON.parse(localStorage.getItem('myList'));
 
-const showTasList = () => {
+window.onload = () => {
+  const getSetDown = getElmtFromLocalStorage();
+
+  if (getSetDown === null) {
+    myHandleStorage(contentList);
+  }
+  showList();
+};
+
+const listContent = document.querySelector('.contentList');
+const showList = () => {
+  const tList = getElmtFromLocalStorage();
   listContent.innerHTML = '';
-  for (let i = 0; i < arrayList.length; i++) {
-    const rules = arrayList[i];
-    const listOfTask = `<li class="item">
-    <i class="far fa-square co" job="complete" id="${rules.index}"></i>
-    <p class="text">${rules.description}</p>
-    <i class="fas fa-ellipsis-v de" job="delete" id="${rules.index}"></i> 
-  </li>
-    `;
-    listContent.innerHTML += listOfTask;
+  for (let i = 0; i < tList.length; i += 1) {
+    const duties = tList[i];
+    const list = ` <li class="setDown" id="${duties.index}">
+      <input type="checkbox" class="examine" id="list-checkbox" name="list-checkbox">
+      ${duties.description}<span class="icon"><i class="fa fa-ellipsis-v"></i></span> <span class="btn-del"></i></span>
+  </li>`;
+    listContent.innerHTML += list;
+  }
+
+  const examine = document.querySelectorAll('.examine');
+  for (let k = 0; k < examine.length; k += 1) {
+    examine[k].addEventListener('change', (event) => {
+      if (examine[k].checked) {
+        examine[k].completed = true;
+        update(event.target, tList[k]);
+        event.target.parentNode.classList.toggle('checked');
+        myHandleStorage(tList);
+      } else {
+        examine[k].completed = false;
+        update(event.target, tList[k]);
+        event.target.parentNode.classList.remove('checked');
+        myHandleStorage(tList);
+      }
+    });
   }
 };
-window.onload = showTasList;
