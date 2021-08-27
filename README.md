@@ -24,8 +24,16 @@ To get a local copy of this project, follow these simple steps
 - Type cd `https://github.com/OLIPLICHE/To-Do-list` to access the project on the terminal
 
 ## To make the project run in your local machine
-- You will need to set up or install webpack (npm server)  in your machine. Open the link bellow for set up
+- You will need to set up or install webpack in your machine. Open the link bellow for set up
 - `https://webpack.js.org/guides/getting-started/#basic-setup`
+
+## Installation of Packages.Json
+ Run the code bellow inside your terminal
+- npm install --save-dev stylelint stylelint-config-standard
+- {
+  "extends": "stylelint-config-standard"
+}
+- npx stylelint "**/*.css"
 
 
 ### Prerequisites
