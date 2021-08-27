@@ -41,7 +41,6 @@ To get a local copy of this project, follow these simple steps
 - GitHub: [@githubhandle](https://github.com/OLIPLICHE)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/olipliche-paka-mavoungou/)
 
-
 ## 🤝⭐️ Contributing
 
 Contributions, issues, and feature requests are welcome!
