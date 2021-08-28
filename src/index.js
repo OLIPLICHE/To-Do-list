@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import './style.css';
 import update from './completed.js';
 import * as func from './tasks.js';
