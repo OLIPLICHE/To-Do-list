@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 15px rgb(0 0 0 / 10%);
-  /* box-shadow: 0 0 2px; */
   max-width: 500px;
   margin: auto;
   margin-top: 5%;
@@ -40,7 +39,6 @@ h2 {
 
 .clean-completed:hover {
   transform: scale(1.08);
-  /* background-color: rgb(164, 172, 180); */
   color: rgb(59, 59, 59);
   background-color: #f1efef;
 }
