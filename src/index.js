@@ -1,70 +1,118 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-undef */
-/* eslint-disable quotes */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-loop-func */
+/* eslint-disable import/extensions */
 import './style.css';
-import update from './new';
+import update from './completed.js';
+import * as func from './tasks.js';
 
-const contentList = [{
-  description: `Wake up at dome to pray`,
-  completed: false,
-  index: 4,
-},
-{
-  description: `attend Church service in the morning`,
-  completed: false,
-  index: 2,
-},
-{
-  description: `dinner with my parents`,
-  completed: false,
-  index: 1,
-},
-];
-contentList.sort((a, b) => a.index - b.index);
-
-const myHandleStorage = (items) => {
-  localStorage.setItem('myList', JSON.stringify(items));
-};
-const getElmtFromLocalStorage = () => JSON.parse(localStorage.getItem('myList'));
-
-window.onload = () => {
-  const getSetDown = getElmtFromLocalStorage();
-  if (getSetDown === null) {
-    myHandleStorage(contentList);
+if (localStorage.getItem('list') == null) {
+  localStorage.setItem('list', JSON.stringify([]));
+}
+const createTask = (task) => {
+  const listContainer = document.createElement('div');
+  listContainer.className = 'listContainer';
+  const description = document.createElement('span');
+  description.className = 'description';
+  const checkbox = document.createElement('input');
+  const removeIcon = document.createElement('i');
+  removeIcon.className = 'fas fa-trash-alt';
+  removeIcon.classList.add('invisible');
+  document.querySelector('.the-list').appendChild(listContainer);
+  checkbox.type = 'checkbox';
+  checkbox.name = 'checkbox';
+  removeIcon.addEventListener('click', (e) => {
+    func.removeTask(task.index);
+    e.target.parentNode.remove();
+  });
+  if (task.completed === true) {
+    checkbox.checked = true;
+    description.classList.add('done');
+  } else {
+    checkbox.checked = false;
+    description.classList.remove('done');
   }
-  showList();
+  checkbox.addEventListener('change', (e) => {
+    update(task, e, description);
+  });
+  listContainer.appendChild(checkbox);
+  listContainer.appendChild(description);
+  listContainer.appendChild(removeIcon);
+  listContainer.addEventListener('mouseenter', () => {
+    removeIcon.classList.remove('invisible');
+  });
+  listContainer.addEventListener('mouseleave', () => {
+    setTimeout(() => {
+      removeIcon.classList.add('invisible');
+    }, 100);
+  });
+  description.innerText = task.description;
+  description.addEventListener('click', () => {
+    description.setAttribute('contenteditable', 'true');
+    description.addEventListener('keyup', () => {
+      task.description = description.innerText;
+      func.editTask(task);
+    });
+  });
 };
-
-const listContent = document.querySelector('.contentList');
-const showList = () => {
-  const tList = getElmtFromLocalStorage();
-  listContent.innerHTML = '';
-  for (let i = 0; i < tList.length; i += 1) {
-    const duties = tList[i];
-    const list = ` <li class="setDown" id="${duties.index}">
-      <input type="checkbox" class="examine" id="list-checkbox" name="list-checkbox" ${duties.completed && 'checked'}>
-      <div>${duties.description}</div>
-      <span class="icon"><i class="fa fa-ellipsis-v"></i></span> <span class="btn-del"></i></span>
-  </li>`;
-    listContent.innerHTML += list;
-  }
-
-  const examine = document.querySelectorAll('.examine');
-  for (let k = 0; k < examine.length; k += 1) {
-    examine[k].addEventListener('change', (event) => {
-      if (examine[k].checked) {
-        examine[k].completed = true;
-        update(event.target, tList[k]);
-        // event.target.parentNode.classList.toggle('checked');
-        myHandleStorage(tList);
-      } else {
-        examine[k].completed = false;
-        update(event.target, tList[k]);
-        // event.target.parentNode.classList.remove('checked');
-        myHandleStorage(tList);
-      }
+const iterateTasks = () => {
+  if (localStorage.getItem('list') != null) {
+    const list = JSON.parse(localStorage.getItem('list'));
+    list.forEach((task) => {
+      createTask(task);
     });
   }
 };
+
+const arrangeList = () => {
+  const list = JSON.parse(localStorage.getItem('list'));
+  if (list.length >= 2) {
+    let max = list[0].index;
+    for (let i = 1; i < list.length; i += 1) {
+      if (list[i].index > max) {
+        max = list[i].index;
+      } else {
+        const temp = list[i];
+        list[i] = list[i - 1];
+        list[i - 1] = temp;
+      }
+    }
+  }
+  localStorage.setItem('list', JSON.stringify(list));
+};
+const renderList = () => {
+  arrangeList();
+  iterateTasks();
+};
+renderList();
+const renderTask = () => {
+  const list = JSON.parse(localStorage.getItem('list'));
+  const inputText = document.querySelector('.input-text').value;
+  let index;
+  if (list.length > 0) index = list[list.length - 1].index + 1;
+  else index = 1;
+  const tasky = func.addTask(inputText, false, index);
+  createTask(tasky);
+  document.querySelector('.input-text').value = '';
+};
+
+document.querySelector('.fa-plus-square').addEventListener('click', (event) => {
+  const value = document.querySelector('.input-text').value.trim();
+  if (!value) {
+    event.stopImmediatePropagation();
+    return false;
+  }
+  renderTask();
+  return true;
+});
+document.querySelector('.input-text').addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    const value = document.querySelector('.input-text').value.trim();
+    if (!value) {
+      event.stopImmediatePropagation();
+      return false;
+    }
+    renderTask();
+  }
+  return true;
+});
+document.querySelector('.clean-completed').addEventListener('click', () => {
+  func.cleanCompleted();
+});

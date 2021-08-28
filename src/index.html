@@ -2,26 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>To do list</title>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="top">
-      <span>Today's To Do</span>
-      <button type="submit" name="button"><i class="fa fa-refresh"></i></button>
+  <section class="to-do-list">
+    <div class="title">
+      <h2>Today's to do</h2>
     </div>
-    <div class="addField">
-      <input type="text" placeholder="Add your List  ...">
-      <button type="submit" name="button"><i class="fa fa-reply"></i></button>
+    <div class="write-task">
+      <input type="text" class="input-text" placeholder="Add your list ..." required>
+      <i class="far fa-plus-square"></i>
     </div>
-      <ul class="contentList">
-
-      </ul>
-    <div class="footer">
-      <button type="submit">Clear all completed</button>
-    </div>
-    </div>
+    <div class="the-list"></div>
+      <button class="clean-completed">Clear All Completed</button>
+    </section>
 </body>
+
 </html>
