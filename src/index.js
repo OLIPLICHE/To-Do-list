@@ -51,14 +51,14 @@ const createTask = (task) => {
     });
   });
 };
-// const iterateTasks = () => {
-//   if (localStorage.getItem('list') != null) {
-//     const list = JSON.parse(localStorage.getItem('list'));
-//     list.forEach((task) => {
-//       createTask(task);
-//     });
-//   }
-// };
+const iterateTasks = () => {
+  if (localStorage.getItem('list') != null) {
+    const list = JSON.parse(localStorage.getItem('list'));
+    list.forEach((task) => {
+      createTask(task);
+    });
+  }
+};
 
 const arrangeList = () => {
   const list = JSON.parse(localStorage.getItem('list'));
