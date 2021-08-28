@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # To-do-list-js
-In this project I created a simple to-do-list using JavaScript, and webpack.
+In this project I created a simple to-do-list using JavaScript, and webpack. I implement create, delete and update methods.
 
 # Built with
 - Webpack
@@ -28,7 +28,7 @@ To get a local copy of this project, follow these simple steps
 - `https://webpack.js.org/guides/getting-started/#basic-setup`
 
 ## Installation of Packages.Json
- Run the code bellow inside your terminal
+ Run the code bellow inside your terminal to install Packages.Json in your local machine.
 - npm install --save-dev stylelint stylelint-config-standard
 - {
   "extends": "stylelint-config-standard"
