@@ -13,4 +13,4 @@ export default function update(task, e, description) {
     }
   });
   localStorage.setItem('list', JSON.stringify(oldList));
-
+}
