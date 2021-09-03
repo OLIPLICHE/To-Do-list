@@ -16,7 +16,7 @@ In this project I created a simple to-do-list using JavaScript, and webpack. I i
 
 
 ## Live Demo
-- [Live Demo Link](https://olipliche.github.io/To-Do-list/)
+- [Live Demo Link](https://olipliche.github.io/To-Do-list/dist/)
 
 ## Getting started
 To get a local copy of this project, follow these simple steps
