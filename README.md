@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # To-do-list-js
-In this project I created a simple to-do-list using JavaScript, and webpack. I implement create, delete and update methods.
+In this project I created a simple to-do-list using JavaScript, and webpack. I implemented create, delete and update methods.
 
 # Built with
 - Webpack
